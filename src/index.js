@@ -40,4 +40,10 @@ function loadBeerList () {
 
     const menuList = document.createElement("ul");
     
+    beers.forEach(beer => { 
+        const navElement = document.createElement('li');
+        navElement.textContent = beer.name;
+        navElement.setAttribute('index', beer.id);
+        navBeerList.append(navElement);
+    })   
 }
