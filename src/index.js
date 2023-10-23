@@ -22,16 +22,19 @@ function getBeerInfo(beer) {
         beerReviewsElement.appendChild(reviewItem);
       });
 
-      beerReviewForm.addEventListener('submit', (event) => {
-        event.preventDefault();
-        console.log('${beer.id}') 
-        if(beerReviewText.value !== ''){
-            beer.reviews.push(beerReviewText.value)
-        } else{
-            alert('Add a Review')
-        }
-    });
 }
+
+// Add a new review of beers
+
+beerReviewForm.addEventListener('submit') {
+    console.log(${beer.id})
+    if(beerReviewText.value == '') {
+        beer.reviews.push(beerReviewText.value)
+    } else{
+        alert('Add a review')
+    }
+};
+
 
 //See a menu of all beers in the <nav> element on the left side of the page when the page loads
 
@@ -40,7 +43,7 @@ function loadBeerList () {
 
     const menuList = document.createElement("ul");
     
-    beers.forEach(beer => { 
+    beers.forEach(beer) { 
         const navElement = document.createElement('li');
         navElement.textContent = beer.name;
         navElement.setAttribute('index', beer.id);
