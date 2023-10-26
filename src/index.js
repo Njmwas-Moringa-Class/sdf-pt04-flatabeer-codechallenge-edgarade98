@@ -1,52 +1,61 @@
-// Code here
+//See the first beer's details, including its name, image, description, and reviews, when the page loads
 
-// See the first beer's details, including its name, image, description, and reviews, when the page loads
-function getBeerInfo(beer) {
+function showBeerDetails(beer) {
+    
     const beerName = document.querySelector('#beer-name');
     const beerImage = document.querySelector('#beer-image');
     const beerDescription = document.querySelector('#beer-description');
+    console.log("Beer" + beer.id)
 
-    beerName.textContent = beerData.name;
-    beerDescription.textContent = beerData.description;
-    beerImage.src = beerData.image_url;
+    const beerDescriptionForm = document.querySelector('#description-form');
+    const beerEditDescription = document.querySelector('#description');
+    beerDescriptionForm.reset();
 
     const beerReviewList = document.querySelector('#review-list');
-    beerReviewList.innerHTML = "";
-
-    const beerReviewForm = document.querySelector('#review-form');
-    const beerReviewText = document.querySelector('#review');
-
-    beerInfo.reviews.forEach(function (review) {
-        const reviewItem = document.getElement("li");
-        reviewItem.textContent = review;
-        beerReviewsElement.appendChild(reviewItem);
-      });
-
 }
 
-// Add a new review of beers
+    reviews.forEach(review => {
+        const reviewList = document.createElement('li');
+        reviewList.textContent = review;
+        beerReviewsList.appendChild(reviewList);
+      });
 
-beerReviewForm.addEventListener('submit') {
-    console.log(${beer.id})
-    if(beerReviewText.value == '') {
-        beer.reviews.push(beerReviewText.value)
-    } else{
-        alert('Add a review')
+    function fetchBeerInfo () {
+        let defaultURL = 'http://localhost:3000/beers/${beer.id}'
+        fetch (defaultURL)
+        .then(response => response.json())
+        .then(data => {
+            beerName.textContent = beer.name;
+            beerImage.src = beer.image_url;
+            beerDescription.textContent = beer.description;
+        })
     }
-};
-
-
 //See a menu of all beers in the <nav> element on the left side of the page when the page loads
+function navBeers (beers) {
+    const beerMenu = document.getElementById("beer-list");
+    beer.forEach(beer => {
+        const beerItem = document.createElement('li');
+})
 
-function loadBeerList () {
-    const navElement = document.getElementById("beer-menu");
+fetch ('http://localhost:3000/beers/')
+.then(response => response.json())
+.then (data => showBeerDetails(beer))
+}
 
-    const menuList = document.createElement("ul");
-    
-    beers.forEach(beer) { 
-        const navElement = document.createElement('li');
-        navElement.textContent = beer.name;
-        navElement.setAttribute('index', beer.id);
-        navBeerList.append(navElement);
-    })   
+
+//Add a new review to the page when the review form is submitted
+document.addEventListener("DOMContentLoaded", () => {
+    let form = document.querySelector('form')
+    form.addEventListener('submit', (e) => {
+       e.preventDefault()
+       beerReview(e.target.review.value)
+       form.reset
+    })
+  })
+
+function beerReview (review) {
+    let li = document.createElement('li')
+    li.textContent = review;
+    console.log(li)
+    document.querySelector('#review-list').appendChild(li)
 }
