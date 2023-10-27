@@ -11,18 +11,18 @@ document.addEventListener('DOMContentLoaded', () => {
 	fetch("http://localhost:3000/beers")
 		.then((res) => res.json())
 		.then((beersData) => {
-			beerName.textContent = beersData[ 1 ].name
-			beerImage.src = beersData[ 1 ].image_url
-			beerDescription.textContent = beersData[ 1 ].description
+		beerName.textContent = beersData[ 1 ].name
+		beerImage.src = beersData[ 1 ].image_url
+		beerDescription.textContent = beersData[ 1 ].description
 			
 			//display customer reviews
-			beersData[ 1 ].reviews.forEach(review => {
-				let reviews = document.createElement('li')
-				reviews.innerText = review
-				reviewList.appendChild(reviews)
-				reviews.addEventListener('click', (e) => {
-					e.preventDefault()
-					reviews.remove()
+		beersData[ 1 ].reviews.forEach(review => {
+		let reviews = document.createElement('li')
+		reviews.innerText = review
+		reviewList.appendChild(reviews)
+		reviews.addEventListener('click', (e) => {
+		e.preventDefault()
+		reviews.remove()
 				})
 			})
 		})
@@ -49,19 +49,15 @@ reviewForm.addEventListener('submit',(e)=>{
   
   function beerNavList() {
 	fetch("http://localhost:3000/beers")
-		.then((res) => res.json())
-       .then((beersData) => {
-			let data1 = "";
-			beersData.map((values) => {
-				data1 += ` <ul id="beer-list">
-				<li>${values.name}</li></ul>
-				<div class="beer-details">
-							<p>
-				  <em id="beer-description">${values.description}</em>
-				</p>
-				<h3>${values.reviews}</h3> </div>
-				`
-			})
+	.then((res) => res.json())
+    .then((beersData) => {
+	let data1 = "";
+	beersData.map((values) => {
+	data1 += ` <ul id="beer-list">
+	<li>${values.name}</li></ul>
+	<div class="beer-details">
+	<p> <li id="beer-description">${values.description}</li></p>
+	<h3>${values.reviews}</h3> </div>` })
             document.querySelector("nav").innerHTML = data1;
 		})
     }
@@ -74,8 +70,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function fetchData() {
    fetch("http://localhost:3000/beers")
-        .then(response => response.json())
-            .then(data => {
+  .then(response => response.json())
+  .then(data => {
                 return renderBeers(data);
             })
     }     
