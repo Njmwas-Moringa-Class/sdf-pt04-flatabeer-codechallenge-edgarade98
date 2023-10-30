@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			})
 		})
 
-//adding a new review to the site
+//adding a new review
   
 const reviewForm = document.getElementById('review-form')
 reviewForm.addEventListener('submit',(e)=>{
@@ -62,22 +62,9 @@ reviewForm.addEventListener('submit',(e)=>{
 		})
     }
 
-//displaying drinks on main menu 
-  
-document.addEventListener('DOMContentLoaded', () => {
-    fetchData()
-      })
+//displaying drinks
 
-function fetchData() {
-   fetch("http://localhost:3000/beers")
-  .then(response => response.json())
-  .then(data => {
-                return renderBeers(data);
-            })
-    }     
-
-    fetchData();
-    function renderBeers(beers) {
+function renderBeers(beers) {
         beers.forEach(beer => {   
         const beerList = document.getElementById("beer-list")
         const flataBeer = document.createElement("li")
@@ -96,3 +83,10 @@ function fetchData() {
         });
       });
     }
+   fetch("http://localhost:3000/beers")
+  .then(response => response.json())
+  .then(beers => {
+                return renderBeers;
+			})  
+
+ fetchData();
