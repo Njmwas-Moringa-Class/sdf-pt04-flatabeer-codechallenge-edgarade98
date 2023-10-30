@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		beerImage.src = beersData[ 1 ].image_url
 		beerDescription.textContent = beersData[ 1 ].description
 			
-			//display customer reviews
+		//display customer reviews
 		beersData[ 1 ].reviews.forEach(review => {
 		let reviews = document.createElement('li')
 		reviews.innerText = review
@@ -83,10 +83,10 @@ function renderBeers(beers) {
         });
       });
     }
-   fetch("http://localhost:3000/beers")
-  .then(response => response.json())
-  .then(beers => {
+fetch("http://localhost:3000/beers")
+.then(response => response.json())
+.then(beers => {
                 return renderBeers;
 			})  
 
- fetchData();
+ 
